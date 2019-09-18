@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (5.0.0-rc.2)
+  - EasySVG (1.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.2)
+  - EasySVG
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - EasySVG
+
+SPEC CHECKSUMS:
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  EasySVG: 03c0324c18c2ab224ff1d5ea9c13b06897f29feb
+
+PODFILE CHECKSUM: f11ccf06e41092894fee6554ad36a1a85cbd5b3a
+
+COCOAPODS: 1.7.2
