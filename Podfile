@@ -7,5 +7,5 @@ target 'CountryViewer' do
 
   # Pods for CountryViewer
 pod 'Alamofire', '~> 5.0.0-rc.2'
-pod 'EasySVG'
+pod 'SVGKit'
 end

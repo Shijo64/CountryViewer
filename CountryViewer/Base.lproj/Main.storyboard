@@ -17,9 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="hKI-tV-RNx">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CountryCell" rowHeight="62" id="F84-2w-C2U" customClass="CountryTableViewCell" customModule="CountryViewer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="62"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F84-2w-C2U" id="jEd-tP-B3F">
                                     <rect key="frame" x="0.0" y="0.0" width="376" height="61.5"/>
@@ -31,26 +36,26 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M42-6l-ljM" customClass="EasyImageView" customModule="EasySVG">
-                                            <rect key="frame" x="20" y="11" width="40" height="40"/>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="szy-Vu-jk9">
+                                            <rect key="frame" x="20" y="10" width="40" height="40"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="M42-6l-ljM" secondAttribute="height" multiplier="1:1" id="scH-iP-41q"/>
+                                                <constraint firstAttribute="height" constant="40" id="9cm-kL-nHL"/>
+                                                <constraint firstAttribute="width" constant="40" id="MSh-bd-0ad"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="szy-Vu-jk9" firstAttribute="top" secondItem="jEd-tP-B3F" secondAttribute="top" constant="10" id="00G-Mj-lJE"/>
+                                        <constraint firstItem="N7v-Gb-Zdd" firstAttribute="leading" secondItem="szy-Vu-jk9" secondAttribute="trailing" constant="15" id="CuR-Kb-837"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="N7v-Gb-Zdd" secondAttribute="trailing" constant="10" id="Ekp-Pj-9qV"/>
-                                        <constraint firstItem="M42-6l-ljM" firstAttribute="leading" secondItem="jEd-tP-B3F" secondAttribute="leadingMargin" id="HAe-Qj-CqM"/>
-                                        <constraint firstItem="M42-6l-ljM" firstAttribute="bottom" secondItem="jEd-tP-B3F" secondAttribute="bottomMargin" id="HJf-Ev-2TD"/>
                                         <constraint firstItem="N7v-Gb-Zdd" firstAttribute="top" secondItem="jEd-tP-B3F" secondAttribute="topMargin" id="anv-pk-V22"/>
-                                        <constraint firstItem="N7v-Gb-Zdd" firstAttribute="leading" secondItem="M42-6l-ljM" secondAttribute="trailing" constant="15" id="eyX-2K-LR9"/>
-                                        <constraint firstItem="M42-6l-ljM" firstAttribute="top" secondItem="jEd-tP-B3F" secondAttribute="topMargin" id="gIc-j0-kMp"/>
+                                        <constraint firstItem="szy-Vu-jk9" firstAttribute="leading" secondItem="jEd-tP-B3F" secondAttribute="leading" constant="20" id="f6B-CE-R5m"/>
+                                        <constraint firstAttribute="bottom" secondItem="szy-Vu-jk9" secondAttribute="bottom" constant="11.5" id="fD1-0q-6Q6"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="N7v-Gb-Zdd" secondAttribute="bottom" id="qxj-zt-ZDx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="countryImageView" destination="M42-6l-ljM" id="HLj-bN-vHF"/>
+                                    <outlet property="countryImageView" destination="szy-Vu-jk9" id="iGG-gk-184"/>
                                     <outlet property="countryLabel" destination="N7v-Gb-Zdd" id="vYh-Ra-z4o"/>
                                 </connections>
                             </tableViewCell>
@@ -60,8 +65,20 @@
                             <outlet property="delegate" destination="nkL-g5-esq" id="x53-xb-FF0"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="countriesSearchBar" destination="hKI-tV-RNx" id="bX6-Ps-mag"/>
+                        <outlet property="searchDisplayController" destination="cWi-8b-GTz" id="LMm-sB-YAz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6fE-Lj-B5L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="cWi-8b-GTz">
+                    <connections>
+                        <outlet property="delegate" destination="nkL-g5-esq" id="7fi-ol-yNP"/>
+                        <outlet property="searchContentsController" destination="nkL-g5-esq" id="rgV-mj-W3e"/>
+                        <outlet property="searchResultsDataSource" destination="nkL-g5-esq" id="npQ-uD-rTk"/>
+                        <outlet property="searchResultsDelegate" destination="nkL-g5-esq" id="u6j-av-Chm"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="43.478260869565219" y="101.78571428571428"/>
         </scene>

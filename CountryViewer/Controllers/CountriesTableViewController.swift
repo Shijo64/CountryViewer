@@ -7,14 +7,23 @@
 //
 
 import UIKit
+import SVGKit
 
-class CountriesTableViewController: UITableViewController {
+class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var countriesSearchBar: UISearchBar!
     
     var countries:[CountryModel]?
+    var filteredCountries:[CountryModel] = []
+    var countryFlags:[SVGKImage]?
+    var searchInProgress = false
+    let flagCache = NSCache<NSString, SVGKImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.countriesSearchBar.delegate = self
+        self.countriesSearchBar.showsCancelButton = true
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,7 +35,13 @@ class CountriesTableViewController: UITableViewController {
         ServiceManager.sharedInstance.GetCountries(onSuccess: {
             response in
             self.countries = response
-            self.tableView.reloadData()
+            DispatchQueue.global().async {
+                //self.countryFlags = self.getCountriesFlags()
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         })
     }
 
@@ -39,20 +54,59 @@ class CountriesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if(self.countries != nil){
+        if(self.countries != nil && !self.searchInProgress){
             return self.countries!.count
         }else{
-            return 0
+            return self.filteredCountries.count
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! CountryTableViewCell
-        let country = self.countries![indexPath.row]
-        let imageUrl = country.flag
-        cell.configureCell(imageUrl: imageUrl!, countryName: country.name!)
+        var country = CountryModel()
+        if(self.searchInProgress){
+            country = self.filteredCountries[indexPath.row]
+        }else{
+            country = self.countries![indexPath.row]
+        }
+        
+        if let cachedFlag = self.flagCache.object(forKey: country.name! as NSString){
+            cell.configureCell(flag: cachedFlag, countryName: country.name!)
+        }else{
+            DispatchQueue.global(qos: .background).async {
+                let image = self.getCountryFlag(country: country)
+                
+                DispatchQueue.main.async {
+                    self.flagCache.setObject(image, forKey: NSString(string: country.name!))
+                    cell.configureCell(flag: image, countryName: country.name!)
+                }
+            }
+        }
         
         return cell
+    }
+    
+    
+    //MARK: SearchController Methods
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchInProgress = true
+        let searchResult = self.countries?.filter({$0.name!.contains(searchText)})
+        self.filteredCountries = searchResult!
+        self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchInProgress = false
+        self.countriesSearchBar.resignFirstResponder()
+        self.countriesSearchBar.text = ""
+        self.filteredCountries = []
+        self.tableView.reloadData()
+    }
+    
+    
+    func getCountryFlag(country:CountryModel) -> SVGKImage {
+        let image = SVGKImage(contentsOf: country.flag!)
+        return image!
     }
     /*
     // Override to support conditional editing of the table view.

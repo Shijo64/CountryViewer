@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import EasySVG
+import SVGKit
 
 class CountryTableViewCell: UITableViewCell {
-
 
     @IBOutlet weak var countryImageView: UIImageView!
     @IBOutlet weak var countryLabel: UILabel!
@@ -27,8 +26,8 @@ class CountryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell(imageUrl:URL, countryName:String){
+    func configureCell(flag:SVGKImage, countryName:String){
         self.countryLabel.text = countryName
-        self.countryImageView.setSVG(imageUrl)
+        self.countryImageView.image = flag.uiImage
     }
 }
