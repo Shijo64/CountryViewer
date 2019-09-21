@@ -7,17 +7,20 @@
 //
 
 import UIKit
-import SVGKit
+import SVGParser
+import EasySVG
 
 class CountryTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var countryImageView: UIImageView!
     @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var flagImageView: UIImageView!
+    
+    let flagsCache = NSCache<NSString, UIImage>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        EasySVG.allowCache = true
         // Initialization code
-        self.countryImageView.sizeToFit()
+        //self.flagImageWebView.contentMode = .scaleAspectFit
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,8 +29,34 @@ class CountryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell(flag:SVGKImage, countryName:String){
-        self.countryLabel.text = countryName
-        self.countryImageView.image = flag.uiImage
+    func configureCell(country:CountryModel){
+        self.countryLabel.text = country.name!
+        
+        
+        if let cachedFlag = self.flagsCache.object(forKey: NSString(string: country.name!)){
+            self.flagImageView.image = cachedFlag
+        }else{
+            do{
+                let data = try Data(contentsOf: country.flag!)
+                parseSVG(data){ image in
+                    self.flagsCache.setObject(image, forKey: NSString(string: country.name!))
+                    self.flagImageView.image = image
+                }
+            }
+            catch{
+                self.flagImageView.image = UIImage(named: "placeholder")
+            }
+        }
+    }
+    
+    func parseSVG(_ data: Data, completionHandler: @escaping (UIImage) -> Void) {
+        
+        DispatchQueue.main.async {
+            SVGParser(xmlData: data).scaledImageWithSize(CGSize(width: 40, height: 40), completion: { image in
+                if let img = image {
+                    completionHandler(img)
+                }
+            })
+        }
     }
 }

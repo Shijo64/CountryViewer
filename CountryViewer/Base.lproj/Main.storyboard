@@ -31,32 +31,32 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pais" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7v-Gb-Zdd">
-                                            <rect key="frame" x="75" y="11" width="283" height="40"/>
+                                            <rect key="frame" x="63" y="11" width="295" height="40"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="szy-Vu-jk9">
-                                            <rect key="frame" x="20" y="10" width="40" height="40"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="E73-w3-cNf">
+                                            <rect key="frame" x="8" y="8" width="40" height="40"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="9cm-kL-nHL"/>
-                                                <constraint firstAttribute="width" constant="40" id="MSh-bd-0ad"/>
+                                                <constraint firstAttribute="height" constant="40" id="gaK-vl-UZH"/>
+                                                <constraint firstAttribute="width" constant="40" id="i7X-U9-aj4"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="szy-Vu-jk9" firstAttribute="top" secondItem="jEd-tP-B3F" secondAttribute="top" constant="10" id="00G-Mj-lJE"/>
-                                        <constraint firstItem="N7v-Gb-Zdd" firstAttribute="leading" secondItem="szy-Vu-jk9" secondAttribute="trailing" constant="15" id="CuR-Kb-837"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="N7v-Gb-Zdd" secondAttribute="trailing" constant="10" id="Ekp-Pj-9qV"/>
+                                        <constraint firstAttribute="bottom" secondItem="E73-w3-cNf" secondAttribute="bottom" constant="13.5" id="EqV-J0-PG2"/>
+                                        <constraint firstItem="E73-w3-cNf" firstAttribute="top" secondItem="jEd-tP-B3F" secondAttribute="top" constant="8" id="VOs-ma-vAq"/>
                                         <constraint firstItem="N7v-Gb-Zdd" firstAttribute="top" secondItem="jEd-tP-B3F" secondAttribute="topMargin" id="anv-pk-V22"/>
-                                        <constraint firstItem="szy-Vu-jk9" firstAttribute="leading" secondItem="jEd-tP-B3F" secondAttribute="leading" constant="20" id="f6B-CE-R5m"/>
-                                        <constraint firstAttribute="bottom" secondItem="szy-Vu-jk9" secondAttribute="bottom" constant="11.5" id="fD1-0q-6Q6"/>
+                                        <constraint firstItem="E73-w3-cNf" firstAttribute="leading" secondItem="jEd-tP-B3F" secondAttribute="leading" constant="8" id="gH2-oj-1bs"/>
+                                        <constraint firstItem="N7v-Gb-Zdd" firstAttribute="leading" secondItem="E73-w3-cNf" secondAttribute="trailing" constant="15" id="p3b-Wl-UAM"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="N7v-Gb-Zdd" secondAttribute="bottom" id="qxj-zt-ZDx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="countryImageView" destination="szy-Vu-jk9" id="iGG-gk-184"/>
                                     <outlet property="countryLabel" destination="N7v-Gb-Zdd" id="vYh-Ra-z4o"/>
+                                    <outlet property="flagImageView" destination="E73-w3-cNf" id="xFv-aV-0Jn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -83,4 +83,7 @@
             <point key="canvasLocation" x="43.478260869565219" y="101.78571428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeHolder" width="800" height="600"/>
+    </resources>
 </document>

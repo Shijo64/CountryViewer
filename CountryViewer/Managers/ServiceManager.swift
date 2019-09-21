@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import SVGKit
 
 class ServiceManager {
     static let sharedInstance = ServiceManager()
@@ -18,10 +17,5 @@ class ServiceManager {
         AF.request(urlString).responseDecodable(of: [CountryModel].self){response in
             onSuccess(response.value)
         }
-    }
-    
-    func GetCountryFlag(country:CountryModel, onSuccess:@escaping(SVGKImage?) -> Void){
-        let image = SVGKImage(contentsOf: country.flag!)
-        onSuccess(image)
     }
 }

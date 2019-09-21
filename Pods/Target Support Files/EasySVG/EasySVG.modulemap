@@ -1,0 +1,6 @@
+framework module EasySVG {
+  umbrella header "EasySVG-umbrella.h"
+
+  export *
+  module * { export * }
+}

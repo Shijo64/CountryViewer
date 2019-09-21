@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVGKit
 
 class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -15,9 +14,7 @@ class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
     
     var countries:[CountryModel]?
     var filteredCountries:[CountryModel] = []
-    var countryFlags:[SVGKImage]?
     var searchInProgress = false
-    let flagCache = NSCache<NSString, SVGKImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,18 +67,7 @@ class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
             country = self.countries![indexPath.row]
         }
         
-        if let cachedFlag = self.flagCache.object(forKey: country.name! as NSString){
-            cell.configureCell(flag: cachedFlag, countryName: country.name!)
-        }else{
-            DispatchQueue.global(qos: .background).async {
-                let image = self.getCountryFlag(country: country)
-                
-                DispatchQueue.main.async {
-                    self.flagCache.setObject(image, forKey: NSString(string: country.name!))
-                    cell.configureCell(flag: image, countryName: country.name!)
-                }
-            }
-        }
+        cell.configureCell(country: country)
         
         return cell
     }
@@ -101,12 +87,6 @@ class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
         self.countriesSearchBar.text = ""
         self.filteredCountries = []
         self.tableView.reloadData()
-    }
-    
-    
-    func getCountryFlag(country:CountryModel) -> SVGKImage {
-        let image = SVGKImage(contentsOf: country.flag!)
-        return image!
     }
     /*
     // Override to support conditional editing of the table view.

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		783471202332D42800CE5856 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7834711F2332D42800CE5856 /* CountryTableViewCell.swift */; };
+		78B2BF8223355A7700921A96 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B2BF8123355A7700921A96 /* WebKit.framework */; };
 		78CA5C892332A46200B8A584 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA5C882332A46200B8A584 /* AppDelegate.swift */; };
 		78CA5C8E2332A46300B8A584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CA5C8C2332A46300B8A584 /* Main.storyboard */; };
 		78CA5C912332A46300B8A584 /* CountryViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78CA5C8F2332A46300B8A584 /* CountryViewer.xcdatamodeld */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		39B3AB16E35AA24C033B4968 /* Pods-CountryViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryViewer.release.xcconfig"; path = "Target Support Files/Pods-CountryViewer/Pods-CountryViewer.release.xcconfig"; sourceTree = "<group>"; };
 		7834711F2332D42800CE5856 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		78B2BF8123355A7700921A96 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		78CA5C852332A46200B8A584 /* CountryViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CA5C882332A46200B8A584 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78CA5C8D2332A46300B8A584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B2BF8223355A7700921A96 /* WebKit.framework in Frameworks */,
 				796E73D38D202DEE094A69BF /* Pods_CountryViewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +142,7 @@
 		FA5E2D69F007465051DAAC3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78B2BF8123355A7700921A96 /* WebKit.framework */,
 				CC272978CDCD7D5A14FB084C /* Pods_CountryViewer.framework */,
 			);
 			name = Frameworks;

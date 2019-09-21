@@ -162,13 +162,15 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/EasySVG/EasySVG.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SVGImage/SVGImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SVGParser/SVGParser.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/EasySVG/EasySVG.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SVGImage/SVGImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SVGParser/SVGParser.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

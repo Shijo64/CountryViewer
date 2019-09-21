@@ -1,26 +1,28 @@
 PODS:
   - Alamofire (5.0.0-rc.2)
-  - CocoaLumberjack (3.5.3):
-    - CocoaLumberjack/Core (= 3.5.3)
-  - CocoaLumberjack/Core (3.5.3)
-  - SVGKit (2.1.1):
-    - CocoaLumberjack (~> 3.0)
+  - EasySVG (1.0.1)
+  - SVGImage (0.0.4)
+  - SVGParser (0.2.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
-  - SVGKit
+  - EasySVG
+  - SVGImage
+  - SVGParser
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - CocoaLumberjack
-    - SVGKit
+    - EasySVG
+    - SVGImage
+    - SVGParser
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
-  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
-  SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
+  EasySVG: 03c0324c18c2ab224ff1d5ea9c13b06897f29feb
+  SVGImage: 669e701cbb6d2fb38aab638b5569e5444cd4a5b5
+  SVGParser: 5649edaeb2dd79489a1752aa344cbc7375470769
 
-PODFILE CHECKSUM: 50f86643f25953743a32a225e2b78f54fc95cde4
+PODFILE CHECKSUM: 2698cb97aaa19f7682f5b3d6382e44856443cab0
 
 COCOAPODS: 1.7.2
