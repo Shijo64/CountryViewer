@@ -7,18 +7,18 @@
 //
 
 import UIKit
-import SVGParser
-import EasySVG
+import SVProgressHUD
+import WebKit
 
 class CountryTableViewCell: UITableViewCell {
     @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var flagImageView: UIImageView!
+    @IBOutlet weak var flagWebView: WKWebView!
+    
     
     let flagsCache = NSCache<NSString, UIImage>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        EasySVG.allowCache = true
         // Initialization code
         //self.flagImageWebView.contentMode = .scaleAspectFit
     }
@@ -31,32 +31,10 @@ class CountryTableViewCell: UITableViewCell {
 
     func configureCell(country:CountryModel){
         self.countryLabel.text = country.name!
-        
-        
-        if let cachedFlag = self.flagsCache.object(forKey: NSString(string: country.name!)){
-            self.flagImageView.image = cachedFlag
-        }else{
-            do{
-                let data = try Data(contentsOf: country.flag!)
-                parseSVG(data){ image in
-                    self.flagsCache.setObject(image, forKey: NSString(string: country.name!))
-                    self.flagImageView.image = image
-                }
-            }
-            catch{
-                self.flagImageView.image = UIImage(named: "placeholder")
-            }
-        }
-    }
-    
-    func parseSVG(_ data: Data, completionHandler: @escaping (UIImage) -> Void) {
-        
-        DispatchQueue.main.async {
-            SVGParser(xmlData: data).scaledImageWithSize(CGSize(width: 40, height: 40), completion: { image in
-                if let img = image {
-                    completionHandler(img)
-                }
-            })
-        }
+        self.flagWebView.scrollView.isScrollEnabled = false
+        self.flagWebView.layer.cornerRadius = self.flagWebView.frame.width/2
+        self.flagWebView.layer.masksToBounds = true
+        let flagRequest = URLRequest(url: country.flag!)
+        self.flagWebView.load(flagRequest)
     }
 }

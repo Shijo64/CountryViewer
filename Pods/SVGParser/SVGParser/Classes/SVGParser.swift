@@ -89,7 +89,7 @@ public class SVGParser: NSObject {
     
     fileprivate func uiWebViewWithImageDrawnInSize(_ size: CGSize, originalImageSize: CGSize?, completion: @escaping (UIWebView, CGSize) -> Void) {
         
-        //assert(Thread.isMainThread, "This method should be called only on main thread")
+        assert(Thread.isMainThread, "This method should be called only on main thread")
         
         // Create WebView
         let webView = SVGWebView(frame: CGRect(origin: CGPoint.zero, size: size))

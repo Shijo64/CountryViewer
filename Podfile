@@ -7,7 +7,11 @@ target 'CountryViewer' do
 
   # Pods for CountryViewer
 pod 'Alamofire', '~> 5.0.0-rc.2'
+pod 'SVProgressHUD'
+pod 'SVGgh'
 pod 'SVGParser'
-pod 'SVGImage'
 pod 'EasySVG'
+pod 'SDWebImageSVGCoder'
+pod 'ShadowView'
+pod 'ChameleonFramework/Swift'
 end

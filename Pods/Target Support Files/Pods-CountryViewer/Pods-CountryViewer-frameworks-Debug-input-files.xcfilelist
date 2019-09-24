@@ -1,5 +1,12 @@
 ${PODS_ROOT}/Target Support Files/Pods-CountryViewer/Pods-CountryViewer-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework
+${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework
 ${BUILT_PRODUCTS_DIR}/EasySVG/EasySVG.framework
-${BUILT_PRODUCTS_DIR}/SVGImage/SVGImage.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SDWebImageSVGCoder/SDWebImageSVGCoder.framework
+${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework
 ${BUILT_PRODUCTS_DIR}/SVGParser/SVGParser.framework
+${BUILT_PRODUCTS_DIR}/SVGgh/SVGgh.framework
+${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/ShadowView/ShadowView.framework

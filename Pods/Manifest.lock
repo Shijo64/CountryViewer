@@ -1,28 +1,60 @@
 PODS:
   - Alamofire (5.0.0-rc.2)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - CocoaLumberjack (3.5.3):
+    - CocoaLumberjack/Core (= 3.5.3)
+  - CocoaLumberjack/Core (3.5.3)
   - EasySVG (1.0.1)
-  - SVGImage (0.0.4)
+  - SDWebImage/Core (5.1.1)
+  - SDWebImageSVGCoder (0.3.0):
+    - SDWebImage/Core (~> 5.0)
+    - SVGKit (>= 2.1)
+  - ShadowView (1.4.3)
+  - SVGgh (1.11.2)
+  - SVGKit (2.1.1):
+    - CocoaLumberjack (~> 3.0)
   - SVGParser (0.2.1)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
+  - ChameleonFramework/Swift
   - EasySVG
-  - SVGImage
+  - SDWebImageSVGCoder
+  - ShadowView
+  - SVGgh
   - SVGParser
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - ChameleonFramework
+    - CocoaLumberjack
     - EasySVG
-    - SVGImage
+    - SDWebImage
+    - SDWebImageSVGCoder
+    - ShadowView
+    - SVGgh
+    - SVGKit
     - SVGParser
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   EasySVG: 03c0324c18c2ab224ff1d5ea9c13b06897f29feb
-  SVGImage: 669e701cbb6d2fb38aab638b5569e5444cd4a5b5
+  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  SDWebImageSVGCoder: 4b354bcdc7d74ce14d9fdb3c9ed9ab2c667f3b57
+  ShadowView: d2d92fd2706b3f6a182be2147149db0b1cf7700d
+  SVGgh: 2359605da95e09a793eaa9b01457a1c220f5ec3e
+  SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
   SVGParser: 5649edaeb2dd79489a1752aa344cbc7375470769
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 2698cb97aaa19f7682f5b3d6382e44856443cab0
+PODFILE CHECKSUM: 911b7ac78f2441c36b2b8fc5615de266e2326cf7
 
 COCOAPODS: 1.7.2

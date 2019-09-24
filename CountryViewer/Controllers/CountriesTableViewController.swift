@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -14,6 +15,7 @@ class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
     
     var countries:[CountryModel]?
     var filteredCountries:[CountryModel] = []
+    var countriesFlags:[UIImage] = []
     var searchInProgress = false
     
     override func viewDidLoad() {
@@ -29,17 +31,15 @@ class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        ServiceManager.sharedInstance.GetCountries(onSuccess: {
-            response in
-            self.countries = response
-            DispatchQueue.global().async {
-                //self.countryFlags = self.getCountriesFlags()
-                
+        DispatchQueue.global(qos: .background).async {
+            ServiceManager.sharedInstance.GetCountries(onSuccess: {
+                response in
+                self.countries = response
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-            }
-        })
+            })
+        }
     }
 
     // MARK: - Table view data source
@@ -47,6 +47,10 @@ class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,6 +76,17 @@ class CountriesTableViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var country:CountryModel?
+        if(self.searchInProgress){
+            country = self.filteredCountries[indexPath.row]
+        }else{
+            country = self.countries![indexPath.row]
+        }
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "countryDetailController") as! CountryDetailViewController
+        controller.country = country
+        self.present(controller, animated: true, completion: nil)
+    }
     
     //MARK: SearchController Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
